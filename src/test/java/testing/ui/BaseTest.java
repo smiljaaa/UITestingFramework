@@ -32,18 +32,19 @@ public class BaseTest {
         driver.manage().window().maximize();
         return driver;
     }
-
+/*
     @AfterSuite(alwaysRun=true)
     public void afterSuite(){
         this.closeWebDriver();
     }
-
+*/
     public HomePage getHomePage(){
         driver = startWebDriver();
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         Assert.assertTrue(homePage.isAt());
         return homePage;
     }
+
 
     protected BasePage loginToHomePage() {
         BasePage basePage = PageFactory.initElements(driver, BasePage.class);

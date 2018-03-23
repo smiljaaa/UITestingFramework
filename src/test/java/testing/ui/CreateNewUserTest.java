@@ -56,6 +56,8 @@ public class CreateNewUserTest extends BaseTest{
         logInPage = myAccountPage.clickOnSignOutButton();
         Assert.assertTrue(logInPage.isAt());
 
+        //Add better verification criteria - getUserMai and compare it to the mail created during this test
+
         }
 
     }

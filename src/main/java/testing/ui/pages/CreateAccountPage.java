@@ -56,7 +56,6 @@ public class CreateAccountPage extends BasePage {
 
     @FindBy(id = "id_state")
     public WebElement dropdownStateMenu;
-    Select oSelect;
 
     @FindBy(id = "id_country")
     public WebElement dropdownContryMenu;
@@ -117,8 +116,26 @@ public class CreateAccountPage extends BasePage {
         setElementText(cityInput,city);
     }
 
-    public void selectState(String state) {
-        oSelect.selectByValue(state);
+    public void selectStateMenu(String state) {
+        Select dropdownState = new Select(dropdownStateMenu);
+        dropdownState.selectByVisibleText(state);
+    }
+
+    public void selectDayMenu(String day){
+        selectDropdownValue(daysDropdownMenu,day);
+    }
+
+    public void selectMonthMenu(String month){
+        selectDropdownValue(monthDropdownsMenu, month);
+    }
+
+    public void selectYearMenu(String year){
+        selectDropdownValue(yearsDropdownMenu, year);
+    }
+
+    public void selectCountryMenu(String country){
+        Select dropdownCountry = new Select(dropdownContryMenu);
+        dropdownCountry.selectByVisibleText(country);
     }
 
     public void setZip(String zip) {
@@ -138,27 +155,20 @@ public class CreateAccountPage extends BasePage {
         setLastName(customerLastName);
         setPass(pass);
 
-        Select dropdownDays = new Select(daysDropdownMenu);
-        dropdownDays.selectByValue(day);
-
-        Select dropdownMonths = new Select(monthDropdownsMenu);
-        dropdownMonths.selectByValue(month);
-
-        Select dropdownYears = new Select(yearsDropdownMenu);
-        dropdownYears.selectByValue(year);
+        selectDayMenu(day);
+        selectMonthMenu(month);
+        selectYearMenu(year);
 
         setFirstName1(firstName);
         setLastName1(lastName);
         setAddress(address);
         setCity(city);
 
-        Select dropdownState = new Select(dropdownStateMenu);
-        dropdownState.selectByVisibleText(state);
+        selectStateMenu(state);
 
         setZip(zip);
 
-        Select dropdownCountry = new Select(dropdownContryMenu);
-        dropdownCountry.selectByVisibleText(country);
+        selectCountryMenu(country);
 
         setMobilePhone(mobilePhone);
     }

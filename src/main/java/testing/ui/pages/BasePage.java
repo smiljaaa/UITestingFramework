@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -64,6 +65,11 @@ public abstract class BasePage {
         element.clear();
         element.sendKeys(text);
         Assert.assertEquals(element.getAttribute("value"),text);
+    }
+
+    public void selectDropdownValue(WebElement dropdownMenu, String value){
+        Select select = new Select(dropdownMenu);
+        select.selectByValue(value);
     }
 
 
